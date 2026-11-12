@@ -11,7 +11,7 @@ RISKY_HOST_PATHS = {
 }
 
 def run(command):
-    result = subprocess.run(command, shell=True, capture_output=True, text=True, check=True)
+    result = subprocess.run(command, capture_output=True, text=True, check=True)
     if result.returncode != 0:
             raise subprocess.CalledProcessError(result.stderr.strip())
     return result

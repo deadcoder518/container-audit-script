@@ -121,7 +121,7 @@ def report(info):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Docker container/image security inspector"
+        description="Docker container security inspector"
     )
 
     parser.add_argument(
@@ -132,8 +132,8 @@ def main():
     args = parser.parse_args()
 
     try:
-        info = docker_inspect_container(args.target, args.image)
-        report(info, args.image)
+        info = docker_inspect_container(args.target)
+        report(info)
     except (RuntimeError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         sys.exit(1)

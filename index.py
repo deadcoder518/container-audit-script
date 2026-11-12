@@ -131,12 +131,8 @@ def main():
 
     args = parser.parse_args()
 
-    try:
-        info = docker_inspect_container(args.target)
-        report(info)
-    except (RuntimeError, json.JSONDecodeError) as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
-        sys.exit(1)
+    info = docker_inspect_container(args.target)
+    report(info)
 
 if __name__ == "__main__":
     main()
